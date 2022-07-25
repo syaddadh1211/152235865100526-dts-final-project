@@ -20,8 +20,8 @@ const Footer = () => {
       </div>
       <div className="left-right">
         <h3 className="sect_foot">
-          Copyright &copy; 2022 Syaddad Hilmi Bahalwan - All Right Reserved -
-          DTS Jalur PROA, React Developer
+          Copyright &copy; 2022 Syaddad Hilmi Bahalwan -152235865100-526 - All
+          Right Reserved - DTS Jalur PROA, React Developer
         </h3>
       </div>
     </div>

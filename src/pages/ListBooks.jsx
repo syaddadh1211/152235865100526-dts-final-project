@@ -35,7 +35,7 @@ const ListBooks = () => {
   return (
     <>
       <Swiper
-        slidesPerView={2}
+        slidesPerView={1}
         spaceBetween={30}
         effect={"fade"}
         navigation={true}

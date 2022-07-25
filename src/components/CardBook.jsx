@@ -23,8 +23,8 @@ const CardBook = ({ propsBook }) => {
       <Card
         className="boxy"
         sx={{
-          width: 1400,
-          height: 540,
+          width: 1000,
+          height: 440,
         }}
         variant="outlined"
       >

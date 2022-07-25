@@ -1,66 +1,71 @@
-import React from "react";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import InboxIcon from "@mui/icons-material/Inbox";
+import "./style.css";
+import gramedia from "../apis/gramedia";
 
-import { Box, Card, CardMedia, CardContent, Typography } from "@mui/material";
+export default function CardCategori() {
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [categories, setCategories] = React.useState([]);
 
-// import { useNavigate } from "react-router-dom";
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
 
-const CardCategori = () => {
-  //   let navigate = useNavigate();
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await gramedia.get("/categories");
 
-  //   const handleBook = (event, book) => {
-  //     navigate("selected/" + book.slug);
-  //   };
+        setCategories(response.data.categories);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+    //cukup sekali dijalankan jadi dikasih array kosong, kalo ingin setiap kali reaktif saat ada perubahan state maka
+    //array bisa diisi nama statenya
+  }, []);
 
   return (
-    <>
-      <Card
-        className="boxy"
-        sx={{
-          width: 300,
-          height: 540,
-        }}
-        variant="elevation"
-      >
-        <Box
-          className="boxy"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            height: 440,
-          }}
+    <Box
+      sx={{
+        width: 300,
+        height: "auto",
+        bgcolor: "background.paper",
+        variant: "outlined",
+        padding: "1em",
+      }}
+    >
+      <List component="nav" aria-label="main mailbox folders">
+        <ListItemButton
+        //   selected={selectedIndex === 0}
+        //   onClick={(event) => handleListItemClick(event, 0)}
         >
-          {/* <CardMedia
-            variant="outlined"
-            component="img"
-            image={`${propsBook.image}`}
-            alt="Kucing"
-            onClick={(event) => handleBook(event, propsBook)}
-            sx={{ width: 300 }}
-          ></CardMedia> */}
-
-          <CardContent
-            sx={{
-              width: 200,
-            }}
-          >
-            <Typography variant="h5" marginBottom={"1em"}>
-              Kategori Buku
-            </Typography>
-            <Typography variant="body1" align="left">
-              test1
-            </Typography>
-            <Typography variant="body1" align="left">
-              test2
-            </Typography>
-            <Typography variant="body1" align="left">
-              test3
-            </Typography>
-          </CardContent>
-        </Box>
-      </Card>
-    </>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Kategori Buku" className="categori-title" />
+        </ListItemButton>
+      </List>
+      <Divider />
+      {categories.map((category) => {
+        return (
+          <List component="nav" aria-label="secondary mailbox folder">
+            <ListItemButton
+              selected={selectedIndex === 2}
+              onClick={(event) => handleListItemClick(event, 2)}
+            >
+              <ListItemText primary={category.name} />
+            </ListItemButton>
+          </List>
+        );
+      })}
+    </Box>
   );
-};
-
-export default CardCategori;
+}

@@ -37,6 +37,10 @@ const settings = ["Logout"];
 const darkTheme = createTheme({
   palette: {
     mode: "light",
+    primary: {
+      main: "#0971f1",
+      darker: "#053e85",
+    },
   },
 });
 
@@ -128,15 +132,20 @@ const NavBar = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{
+          bgcolor: "#035B35",
+        }}
+      >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <img src={Image} alt="e-book" width="200" heigth="165"></img>
+            <img src={Image} alt="e-book" width="95" heigth="95"></img>
             <Box
               sx={{
                 flexGrow: 1,
                 display: { xs: "flex", md: "none" },
-                mode: "dark",
+                backgroundColor: "transparent",
               }}
             >
               <IconButton
@@ -164,7 +173,7 @@ const NavBar = () => {
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
                 sx={{
-                  display: { xs: "block", md: "none", mode: "dark" },
+                  display: { xs: "block", md: "none" },
                 }}
               >
                 {pages.map((page) => (
@@ -185,7 +194,6 @@ const NavBar = () => {
               sx={{
                 flexGrow: 1,
                 display: { xs: "none", md: "flex" },
-                mode: "dark",
               }}
             >
               {pages.map((page) => (
@@ -198,12 +206,12 @@ const NavBar = () => {
                 </Button>
               ))}
             </Box>
-            <Box sx={{ flexGrow: 0, mode: "dark" }}>
+            <Box sx={{ flexGrow: 0 }}>
               {/* <Tooltip title="Open settings"> */}
               <Typography>{user?.email}</Typography>
             </Box>
             <Box>
-              <Search sx={{ mode: "dark", marginRight: "5px" }}>
+              <Search sx={{ marginRight: "5px" }}>
                 <SearchIconWrapper>
                   <SearchIcon />
                 </SearchIconWrapper>
@@ -213,7 +221,7 @@ const NavBar = () => {
                 />
               </Search>
             </Box>
-            <Box sx={{ flexGrow: 0, mode: "dark" }}>
+            <Box sx={{ flexGrow: 0 }}>
               {/* <Tooltip title="Open settings"> */}
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Login" src="../../public/logo192.png" />
