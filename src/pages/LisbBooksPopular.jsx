@@ -6,15 +6,13 @@ import { Box } from "@mui/material";
 
 import CardBook from "../components/CardBook";
 
-const ListBooks = () => {
+const ListBooksPopular = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await gramedia.get(
-          "/categories/science-fiction-fantasy/books"
-        );
+        const response = await gramedia.get("/categories/Islam/books");
 
         setBooks(response.data.books);
       } catch (err) {
@@ -28,7 +26,7 @@ const ListBooks = () => {
 
   return (
     <>
-      <div className="category-title"> 10 Bulu Terlaris</div>
+      <div className="category-title"> 10 Bulu Religi Terlaris</div>
       <Box
         sx={{
           flexGrow: 1,
@@ -52,4 +50,4 @@ const ListBooks = () => {
   );
 };
 
-export default ListBooks;
+export default ListBooksPopular;

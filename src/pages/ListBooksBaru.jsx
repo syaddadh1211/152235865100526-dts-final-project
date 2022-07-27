@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import gramedia from "../apis/gramedia";
-
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
+import { Box, CardActionArea, Container, ButtonBase } from "@mui/material";
+import { experimentalStyled as styled } from "@mui/material/styles";
 
 import CardBook from "../components/CardBook";
 
-const ListBooks = () => {
+const ListBooksBaru = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await gramedia.get(
-          "/categories/science-fiction-fantasy/books"
-        );
+        const response = await gramedia.get("/categories/classics/books");
 
         setBooks(response.data.books);
       } catch (err) {
@@ -28,7 +29,7 @@ const ListBooks = () => {
 
   return (
     <>
-      <div className="category-title"> 10 Bulu Terlaris</div>
+      <div className="category-title"> 10 Bulu Baru</div>
       <Box
         sx={{
           flexGrow: 1,
@@ -52,4 +53,4 @@ const ListBooks = () => {
   );
 };
 
-export default ListBooks;
+export default ListBooksBaru;

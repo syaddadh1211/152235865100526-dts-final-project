@@ -1,9 +1,12 @@
 import React from "react";
 import "./footer.css";
-import fb from "../images/facebook.png";
-import ig from "../images/instagram.png";
-import whatsapp from "../images/whatsapp.png";
-import twitter from "../images/twitter.png";
+
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { green, purple, blue } from "@mui/material/colors";
 
 const Footer = () => {
   return (
@@ -24,25 +27,9 @@ const Footer = () => {
             <p>Customer Care : (+62) 21 1234 56677</p>
             <p>
               Product Related : 6287784963509{" "}
-              <span>
-                <img src={whatsapp} alt="wa" width="26" height="26" />{" "}
-              </span>
-            </p>
-            <p>
-              Order Related :{" "}
-              <a href="mailto:bahalwans@gmail.com">bahalwans@gmail.com</a>
+              <WhatsAppIcon fontSize="large" sx={{ color: green[200] }} />
             </p>
           </div>
-          <p className="category-subtitle">Ikuti Kami :</p>
-          <a href="https://www.linkedin.com/in/syaddad-hilmi-bahalwan-69b1a073/">
-            <img src={whatsapp} alt="linkedin" width="46" height="46" />
-          </a>
-          <a href="https://www.instagram.com/freshbean.cafe/">
-            <img src={ig} alt="instagram" width="46" height="46" />
-          </a>
-          <a href="https://syaddadh1211.github.io/">
-            <img src={fb} alt="fb" width="46" height="46" />
-          </a>
         </nav>
         <nav className="navigasi">
           <p className="category-subtitle">Kebijakan Toko</p>
@@ -53,25 +40,46 @@ const Footer = () => {
           </div>
         </nav>
         <nav className="navigasi">
-          <p className="category-subtitle">Jasa Pengiriman</p>
+          <p className="category-subtitle">Informasi</p>
           <div className="kontak">
-            <p>Cara Belanja</p>
+            <p>Tentang Kami</p>
+            <p>E-book FAQ</p>
+            <p>Terms and Conditions</p>
           </div>
         </nav>
         <nav className="navigasi">
-          <p className="category-subtitle">Metode Pembayaran</p>
-          <div className="kontak">
-            <p>Cara Belanja</p>
+          <p className="category-subtitle">Ikuti Kami :</p>
+          <div>
+            <a href="https://www.linkedin.com/in/syaddad-hilmi-bahalwan-69b1a073/">
+              <LinkedInIcon
+                color="secondary"
+                fontSize="large"
+                sx={{ color: blue[200] }}
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/freshbean.cafe/"
+              alignItems="left"
+            >
+              <InstagramIcon fontSize="large" sx={{ color: purple[500] }} />
+            </a>
+            <a href="https://syaddadh1211.github.io/">
+              <FacebookIcon fontSize="large" sx={{ color: blue[800] }} />
+            </a>
           </div>
+          <p>
+            <a href="mailto:bahalwans@gmail.com">
+              <MailOutlineIcon fontSize="large" sx={{ color: purple[700] }} />
+            </a>
+          </p>
         </nav>
       </div>
-      <div className="sect_foot">
-        <h3>
-          Copyright &copy; 2022, by Syaddad Hilmi Bahalwan
-          -152235865100526-dts-final-project - All Right Reserved - DTS Jalur
-          PROA, React Developer
-        </h3>
-      </div>
+
+      <section className="sect_foot">
+        Copyright &copy; 2022, by Syaddad Hilmi Bahalwan
+        -152235865100526-dts-final-project - All Right Reserved - DTS Jalur
+        PROA, React Developer
+      </section>
     </div>
   );
 };

@@ -35,14 +35,15 @@ export default function CardCategori() {
   return (
     <Box
       sx={{
-        width: "250px",
+        width: "220px",
+        height: "auto",
         variant: "inset",
         paddingLeft: "1em",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        // marginTop: "20px",
-        backgroundColor: "white",
+        marginTop: "-10px",
+        backgroundColor: "rgb(254, 254, 254)",
       }}
     >
       <List component="nav" aria-label="main mailbox folders">
@@ -63,8 +64,11 @@ export default function CardCategori() {
             <ListItemButton
               selected={selectedIndex === 2}
               onClick={(event) => handleListItemClick(event, 2)}
+              sx={{
+                width: "16vw",
+              }}
             >
-              <ListItemText primary={category.name} />
+              <ListItemText primary={category.name} sx={{}} />
             </ListItemButton>
           </List>
         );
