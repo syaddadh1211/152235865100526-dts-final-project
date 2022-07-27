@@ -49,7 +49,7 @@ const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    // backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: 0,
   width: "100%",
@@ -70,7 +70,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
+  color: "black",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -107,16 +107,16 @@ const NavBar = () => {
         navigate("/");
         break;
       case "Semua Buku":
-        navigate("/played");
+        navigate("/all");
         break;
       case "Buku Baru":
-        navigate("/played");
+        navigate("/all");
         break;
       case "Buku Terlaris":
-        navigate("/played");
+        navigate("/laris");
         break;
       case "Buku Promo":
-        navigate("/played");
+        navigate("/promo");
         break;
       default:
         navigate("/");
@@ -135,17 +135,17 @@ const NavBar = () => {
       <AppBar
         position="static"
         sx={{
-          bgcolor: "#035B35",
+          bgcolor: "#009097",
+          marginBottom: "0.001px",
         }}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="l">
           <Toolbar disableGutters>
-            <img src={Image} alt="e-book" width="95" heigth="95"></img>
+            <img src={Image} alt="e-book" width="85" heigth="85"></img>
             <Box
               sx={{
                 flexGrow: 1,
                 display: { xs: "flex", md: "none" },
-                backgroundColor: "transparent",
               }}
             >
               <IconButton
@@ -211,12 +211,14 @@ const NavBar = () => {
               <Typography>{user?.email}</Typography>
             </Box>
             <Box>
-              <Search sx={{ marginRight: "5px" }}>
+              <Search
+                sx={{ marginRight: "5px", bgcolor: "white", color: "black" }}
+              >
                 <SearchIconWrapper>
                   <SearchIcon />
                 </SearchIconWrapper>
                 <StyledInputBase
-                  placeholder="Cari Judul / Penulis"
+                  placeholder="Cari Judul"
                   inputProps={{ "aria-label": "search" }}
                 />
               </Search>

@@ -1,11 +1,3 @@
-.bg_sect {
-  background-color: #84b7fe;
-}
-
-.bg {
-  background-color: #e9ecc3;
-}
-
 .left-right {
   display: flex;
   flex-direction: row;
@@ -17,9 +9,8 @@
 }
 
 .navigasi {
-  flex-basis: 20%;
-  background-color: #e9ecc3;
-  padding: 10px;
+  width: 20%;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,9 +19,5 @@
 }
 
 .konten1 {
-  flex-basis: 50%;
-  background-color: rgb(208, 196, 177);
-  padding: 10px;
-  font-size: smaller;
-  font-family: Tahoma;
+  width: 80%;
 }

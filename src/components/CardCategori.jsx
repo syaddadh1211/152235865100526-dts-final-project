@@ -35,11 +35,14 @@ export default function CardCategori() {
   return (
     <Box
       sx={{
-        width: 300,
-        height: "auto",
-        bgcolor: "background.paper",
-        variant: "outlined",
-        padding: "1em",
+        width: "250px",
+        variant: "inset",
+        paddingLeft: "1em",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        // marginTop: "20px",
+        backgroundColor: "white",
       }}
     >
       <List component="nav" aria-label="main mailbox folders">
@@ -50,7 +53,7 @@ export default function CardCategori() {
           <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
-          <ListItemText primary="Kategori Buku" className="categori-title" />
+          <ListItemText primary="Kategori Buku" className="category-title" />
         </ListItemButton>
       </List>
       <Divider />
@@ -66,6 +69,7 @@ export default function CardCategori() {
           </List>
         );
       })}
+      <Divider />
     </Box>
   );
 }

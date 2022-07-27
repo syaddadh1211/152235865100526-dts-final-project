@@ -2,39 +2,50 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  /* height: 200vh; */
-  width: "auto";
+  width: 98vw;
   border-style: none;
-  column-gap: 0px;
 }
 
 .navigasi {
   flex-basis: 20%;
-  background-color: #e9ecc3;
+  background: #008f96;
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: large;
 }
 
 .konten1 {
   flex-basis: 80%;
-  background-color: rgb(208, 196, 177);
-  padding: 10px;
+  background-color: #009097;
+  padding-top: 30px;
   font-size: smaller;
   font-family: Tahoma;
 }
 .sect_foot {
   color: white;
   background-color: rgb(13, 72, 42);
-  margin-left: 2em;
-  margin-right: 2em;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  width: 1000;
+  text-align: center;
+}
+.category-title {
   display: flex;
-  flex-direction: row;
+  text-align: left;
+  color: rgb(171, 230, 213);
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+.category-subtitle {
+  display: flex;
+  color: white;
+  justify-items: flex-start;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 
-  justify-content: center;
+.kontak {
+  text-align: left;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  color: white;
 }

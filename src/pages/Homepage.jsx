@@ -6,15 +6,17 @@ import ListBookPopular from "../pages/LisbBookPopular";
 import Footer from "../components/Footer";
 import Image from "../../src/images/recom.png";
 import CardCategori from "../components/CardCategori";
+import CardQuote from "../components/CardQuote";
 
 const HomePage = () => {
   return (
-    <div className="bg">
+    <div>
       <div className="left-right">
         <nav className="navigasi">
           <CardCategori />
         </nav>
         <section class="konten1">
+          <CardQuote />
           <ListBooks />
           {/* <p className="bg_sect">
           <h2 className="sect_foot">
@@ -34,7 +36,7 @@ const HomePage = () => {
           <ListBookPopular />
         </section> */}
       </div>
-      <Footer classname="bg_foot" />
+      <Footer />
     </div>
   );
 };
