@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import gramedia from "../apis/gramedia";
+import { gramedia } from "../apis/gramedia";
 
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
@@ -28,7 +28,7 @@ const ListBooks = () => {
 
   return (
     <>
-      <div className="category-title"> 10 Bulu Terlaris</div>
+      <div className="category-title"> 10 Bulu Import Terlaris</div>
       <Box
         sx={{
           flexGrow: 1,
@@ -37,7 +37,6 @@ const ListBooks = () => {
           backgroundColor: "white",
           flexWrap: "wrap",
           width: "76vw",
-          marginTop: "20px",
         }}
       >
         {books.slice(0, 10).map((book) => {

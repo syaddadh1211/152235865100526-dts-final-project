@@ -17,10 +17,11 @@ const HomePage = () => {
           <CardCategori />
         </nav>
         <section>
+          <CardQuote quote="2" />
           <ListBooks />
           <ListBooksBaru />
           <ListBooksPopular />
-          <CardQuote />
+          <CardQuote quote="1" />
         </section>
       </div>
       <Footer />

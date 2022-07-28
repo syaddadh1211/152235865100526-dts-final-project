@@ -69,7 +69,7 @@ const Footer = () => {
           </div>
           <p>
             <a href="mailto:bahalwans@gmail.com">
-              <MailOutlineIcon fontSize="large" sx={{ color: purple[700] }} />
+              <MailOutlineIcon fontSize="medium" sx={{ color: purple[700] }} />
             </a>
           </p>
         </nav>

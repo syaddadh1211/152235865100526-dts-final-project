@@ -11,11 +11,16 @@ import { Box, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import quote1 from "../images/pre-order.jpg";
 import quote2 from "../images/promo.jpeg";
-import quote3 from "../images/Fantastic-Beasts.jpg";
-import quote4 from "../images/majalah.jpg";
+import quote4 from "../images/Fantastic-Beasts.jpg";
+import quote3 from "../images/majalah.jpg";
 
-const CardQuote = () => {
+const CardQuote = ({ quote }) => {
   let navigate = useNavigate();
+  if (quote == 2) {
+    quote = quote2;
+  } else if (quote == 1) {
+    quote = quote1;
+  }
 
   const handleBook = (event, book) => {
     navigate("selected/" + book.slug);
@@ -26,7 +31,7 @@ const CardQuote = () => {
       <Container
         sx={{
           backgroundColor: "inherit",
-          marginTop: "-20px",
+          marginTop: "20px",
           marginBottom: "5px",
           marginLeft: "0px",
           width: "6vw",
@@ -35,37 +40,20 @@ const CardQuote = () => {
         <Box
           sx={{
             width: "50vw",
-            height: "28vw",
-            marginRight: "14px",
+            height: "auto",
+            marginRight: "5px",
+            marginTop: "1vh",
           }}
         >
-          <img src={quote1} alt="quote1" width="800vw" height="350vw" />
-          <img src={quote2} alt="quote2" width="800vw" height="250vw" />
-          {/* <Swiper
-            spaceBetween={30}
-            slidesPerView={"auto"}
-            // centeredSlides={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
+          <img
+            src={quote}
+            alt="quote"
+            style={{
+              maxHeight: "50%",
+              maxWidth: "140%",
+              marginLeft: "0.2em",
             }}
-            modules={[Autoplay, Pagination]}
-            className="mySwiper"
-            marginTop="5px"
-          >
-            <SwiperSlide>
-              <img src={quote1} alt="quote1" width="1030vw" height="400vw" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={quote2} alt="quote2" width="1030vw" height="400vw" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={quote3} alt="quote3" width="1030vw" height="400vw" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={quote4} alt="quote4" width="1030vw" height="400vw" />
-            </SwiperSlide>
-          </Swiper> */}
+          />
         </Box>
       </Container>
     </>

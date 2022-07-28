@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import gramedia from "../apis/gramedia";
+import { gramediaLokal } from "../apis/gramedia";
 
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
@@ -12,7 +12,7 @@ const ListBooksPopular = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await gramedia.get("/categories/Islam/books");
+        const response = await gramediaLokal.get("/categories/islam/books");
 
         setBooks(response.data.books);
       } catch (err) {

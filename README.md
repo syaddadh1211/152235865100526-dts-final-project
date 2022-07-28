@@ -1,15 +1,18 @@
-# DTS Final Project
+# Situs E-Book Online
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/1tIJWFEUr2NU8FZSxAA1IPi7ZYVn1jBDp6IdFUZjempg/edit?usp=sharing).
+### Fitur yang tersedia
 
-## Fork and Clone
+`Pencarian/Search berdasarkan Judul Buku`
 
-Mohon peserta bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
+`Filter berdasarkan Categori Buku`
 
-`[nomor peserta tanpa strip]-dts-final-project`
+`Form Submit Hubungi Kami/Contact Us`
+data disimpan pada situs heroku (nodeJs REST API) menggunakan PostGreSQL
 
-Contoh: `1512345678001-dts-final-project`
+`Form Submit Request E-Book`
+User boleh request e-book
+data disimpan pada situs heroku (nodeJs REST API) menggunakan PostGreSQL
 
-## Branching, commit
-
-Branch dapat sesuai dengan kebutuhan mandiri, namun hasil akhirnya harus di merge ke branch `main`.
+`Daftar Request E-book yang bisa didownload`
+Menampilkan daftar e-book hasil request user, dan user bisa mendownloadnya.
+Data file e-book dalam format PDF dan disimpan di server Heroku

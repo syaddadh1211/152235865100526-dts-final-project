@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import gramedia from "../apis/gramedia";
+import { gramedia } from "../apis/gramedia";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -29,7 +29,7 @@ const ListBooksBaru = () => {
 
   return (
     <>
-      <div className="category-title"> 10 Bulu Baru</div>
+      <div className="category-title"> 10 Buku Import Classic Terbaru</div>
       <Box
         sx={{
           flexGrow: 1,
