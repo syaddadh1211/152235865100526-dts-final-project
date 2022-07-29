@@ -18,7 +18,7 @@ const HomePage = () => {
         </nav>
         <section>
           <CardQuote quote="2" />
-          <ListBooks />
+          <ListBooks propId="1" paramBooks="" keyword="" />
           <ListBooksBaru />
           <ListBooksPopular />
           <CardQuote quote="1" />

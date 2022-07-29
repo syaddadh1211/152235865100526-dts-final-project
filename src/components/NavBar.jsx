@@ -24,12 +24,13 @@ import { logout } from "../authentication/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../authentication/firebase";
 import Image from "../../src/images/e-book.jpg";
+import SearchResult from "../pages/SearchResult";
 
 const pages = [
   "Home",
   "Semua Buku",
   "Buku Baru",
-  "Buku Terlaris",
+  "Segera Terbit",
   "Buku Promo",
 ];
 const settings = ["Logout"];
@@ -130,6 +131,12 @@ const NavBar = () => {
     navigate("/");
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      navigate("/search/" + event.target.value);
+    }
+  };
+
   return (
     <ThemeProvider theme={darkTheme}>
       <AppBar
@@ -220,6 +227,7 @@ const NavBar = () => {
                 <StyledInputBase
                   placeholder="Cari Judul"
                   inputProps={{ "aria-label": "search" }}
+                  onKeyPress={handleKeyPress}
                 />
               </Search>
             </Box>

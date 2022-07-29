@@ -5,6 +5,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import NavBar from "./components/NavBar";
 import ProtectedComponent from "./components/ProtectedComponent";
+import DetailBook from "./pages/DetailBook";
+import SearchResult from "./pages/SearchResult";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -30,15 +33,23 @@ root.render(
               <MoviePlayed />
             </ProtectedComponent>
           }
+        />*/}
+        <Route
+          path="selected/:bookSlug"
+          element={
+            // <ProtectedComponent>
+            <DetailBook />
+            // </ProtectedComponent>
+          }
         />
         <Route
-          path="selected/:movieId"
+          path="search/:keyword"
           element={
-            <ProtectedComponent>
-              <MovieSelected />
-            </ProtectedComponent>
+            // <ProtectedComponent>
+            <SearchResult />
+            // </ProtectedComponent>
           }
-        /> */}
+        />
         <Route path="*" element={<h1>Halaman tidak ditemukan</h1>} />
       </Routes>
     </Router>
