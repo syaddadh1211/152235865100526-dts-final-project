@@ -9,6 +9,7 @@ import DetailBook from "./pages/DetailBook";
 import SearchResult from "./pages/SearchResult";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CategoriesResult from "./pages/CategoriesResult";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,15 +26,15 @@ root.render(
           }
         />
         {/* <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+        <Route path="register" element={<RegisterPage />} />*/}
         <Route
-          path="played"
+          path="category/:jenis"
           element={
-            <ProtectedComponent>
-              <MoviePlayed />
-            </ProtectedComponent>
+            // <ProtectedComponent>
+            <CategoriesResult />
+            // </ProtectedComponent>
           }
-        />*/}
+        />
         <Route
           path="selected/:bookSlug"
           element={

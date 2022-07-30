@@ -15,9 +15,13 @@ const HomePage = () => {
         </nav>
         <section>
           <CardQuote quote="2" />
-          <ListBooks propId="1" paramBooks="" keyword="" />
-          <ListBooks propId="3" paramBooks="" keyword="" />
-          <ListBooks propId="4" paramBooks="" keyword="" />
+          <ListBooks propId="1" paramBooks="" keyword="Buku Import Terlaris" />
+          <ListBooks
+            propId="3"
+            paramBooks=""
+            keyword="Buku Import Classic Terbaru"
+          />
+          <ListBooks propId="4" paramBooks="" keyword="Buku Religi Terlaris" />
           <CardQuote quote="1" />
         </section>
       </div>

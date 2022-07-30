@@ -14,7 +14,7 @@ const ProtectedComponent = ({ children }) => {
     }
   }, [user, navigate]);
 
-  //memanfaatkan loading suoaya gak ada flashing halaman
+  //memanfaatkan loading supaya gak ada flashing halaman
   if (loading) {
     return;
   } else {

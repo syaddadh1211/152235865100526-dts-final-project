@@ -8,13 +8,17 @@ import Divider from "@mui/material/Divider";
 import InboxIcon from "@mui/icons-material/Inbox";
 import "./style.css";
 import { gramedia } from "../apis/gramedia";
+import { useNavigate } from "react-router-dom";
 
 export default function CardCategori() {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const [categories, setCategories] = React.useState([]);
 
-  const handleListItemClick = (event, index) => {
+  let navigate = useNavigate();
+
+  const handleListItemClick = (event, index, category) => {
     setSelectedIndex(index);
+    navigate("/category/" + category.slug);
   };
 
   React.useEffect(() => {
@@ -70,7 +74,7 @@ export default function CardCategori() {
           <List component="nav" aria-label="secondary mailbox folder">
             <ListItemButton
               selected={selectedIndex === 2}
-              onClick={(event) => handleListItemClick(event, 2)}
+              onClick={(event) => handleListItemClick(event, 2, category)}
               sx={{
                 maxWidth: "100%",
                 height: "auto",

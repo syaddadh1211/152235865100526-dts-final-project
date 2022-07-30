@@ -24,15 +24,8 @@ import { logout } from "../authentication/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../authentication/firebase";
 import Image from "../../src/images/e-book.jpg";
-import SearchResult from "../pages/SearchResult";
 
-const pages = [
-  "Home",
-  "Semua Buku",
-  "Buku Baru",
-  "Segera Terbit",
-  "Buku Promo",
-];
+const pages = ["Home", "Buku Fiksi Pilihan", "Komik Segera Terbit"];
 const settings = ["Logout"];
 
 const darkTheme = createTheme({
@@ -107,17 +100,14 @@ const NavBar = () => {
       case "Home":
         navigate("/");
         break;
-      case "Semua Buku":
-        navigate("/all");
+      case "Buku Fiksi Pilihan":
+        navigate("/category/adult-fiction");
         break;
-      case "Buku Baru":
-        navigate("/all");
+      case "Komik Segera Terbit":
+        navigate("/category/comics-graphic-novels");
         break;
-      case "Buku Terlaris":
-        navigate("/laris");
-        break;
-      case "Buku Promo":
-        navigate("/promo");
+      case "Buku Bahasa Inggris Promo":
+        navigate("/search/Sherlock");
         break;
       default:
         navigate("/");
