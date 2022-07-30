@@ -1,11 +1,8 @@
 import React from "react";
 import "./style.css";
 
-import ListBooks from "../pages/ListBooks";
-import ListBooksBaru from "../pages/ListBooksBaru";
-import ListBooksPopular from "./LisbBooksPopular";
+import ListBooks from "../components/ListBooks";
 import Footer from "../components/Footer";
-
 import CardCategori from "../components/CardCategori";
 import CardQuote from "../components/CardQuote";
 
@@ -19,8 +16,8 @@ const HomePage = () => {
         <section>
           <CardQuote quote="2" />
           <ListBooks propId="1" paramBooks="" keyword="" />
-          <ListBooksBaru />
-          <ListBooksPopular />
+          <ListBooks propId="3" paramBooks="" keyword="" />
+          <ListBooks propId="4" paramBooks="" keyword="" />
           <CardQuote quote="1" />
         </section>
       </div>

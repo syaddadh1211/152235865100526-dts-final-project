@@ -8,7 +8,7 @@ const CardBook = ({ propsBook }) => {
   let navigate = useNavigate();
 
   const handleBook = (event, book) => {
-    navigate("selected/" + book.slug);
+    navigate("/selected/" + book.slug);
   };
 
   return (
@@ -24,7 +24,7 @@ const CardBook = ({ propsBook }) => {
           maxWidth="138px"
         >
           <Grid item xs={8}>
-            <a href={"#"}>
+            <a href="#">
               <CardMedia
                 component="img"
                 height="200px"
