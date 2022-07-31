@@ -9,3 +9,5 @@ Sebuah situs yang menampilkan e-book Gramedia dengan memanfaatkan API dari `http
 `Filter berdasarkan Categori Buku`
 
 `Menampilkan Detil buku`
+
+`Sign in/up menggunakan firebase Auth.`

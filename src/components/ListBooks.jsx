@@ -6,7 +6,6 @@ import CardBook from "./CardBook";
 const ListBooks = ({ propId, paramBooks, keyword }) => {
   const [books, setBooks] = useState([]);
   const [title, setTitle] = useState([]);
-  let tampilTotal = 0;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,35 +18,29 @@ const ListBooks = ({ propId, paramBooks, keyword }) => {
             );
             setBooks(response.data.books);
             setTitle(keyword);
-            tampilTotal = 0;
             break;
           case "2": // dari SearchResult component
             setBooks(paramBooks);
             setTitle("");
-            tampilTotal = 1;
             break;
           case "3":
             response = await gramedia.get("/categories/classics/books");
             setBooks(response.data.books);
             setTitle(keyword);
-            tampilTotal = 0;
             break;
           case "4":
             response = await gramedia.get("/categories/islam/books");
             setBooks(response.data.books);
             setTitle(keyword);
-            tampilTotal = 0;
             break;
           case "5": // dari CategoriesResult component
             console.log(paramBooks);
             setBooks(paramBooks);
             setTitle(keyword);
-            tampilTotal = 1;
             break;
           default:
             setBooks([]);
             setTitle("");
-            tampilTotal = 0;
             break;
         }
       } catch (err) {

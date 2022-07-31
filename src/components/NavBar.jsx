@@ -26,7 +26,6 @@ import { auth } from "../authentication/firebase";
 import Image from "../../src/images/e-book.jpg";
 
 const pages = ["Home", "Buku Fiksi Pilihan", "Komik Segera Terbit"];
-const settings = ["Logout"];
 
 const darkTheme = createTheme({
   palette: {
@@ -83,6 +82,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [login, setLogin] = React.useState("");
 
   let navigate = useNavigate();
   const [user] = useAuthState(auth);
@@ -116,9 +116,15 @@ const NavBar = () => {
   };
 
   const handleCloseUserMenu = async () => {
+    console.log(anchorElUser);
+    if (user) {
+      setLogin("Logout");
+      await logout();
+      setLogin("Login");
+    } else {
+      navigate("/login");
+    }
     setAnchorElUser(null);
-    await logout();
-    navigate("/");
   };
 
   const handleKeyPress = (event) => {
@@ -126,6 +132,14 @@ const NavBar = () => {
       navigate("/search/" + event.target.value);
     }
   };
+
+  React.useEffect(() => {
+    if (user) {
+      setLogin("Logout");
+    } else {
+      setLogin("Login");
+    }
+  }, [login, user, navigate]);
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -243,11 +257,9 @@ const NavBar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
+                <MenuItem key="1" onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{login}</Typography>
+                </MenuItem>
               </Menu>
             </Box>
           </Toolbar>

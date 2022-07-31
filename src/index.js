@@ -7,6 +7,8 @@ import NavBar from "./components/NavBar";
 import ProtectedComponent from "./components/ProtectedComponent";
 import DetailBook from "./pages/DetailBook";
 import SearchResult from "./pages/SearchResult";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CategoriesResult from "./pages/CategoriesResult";
@@ -17,40 +19,19 @@ root.render(
     <Router>
       <NavBar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <ProtectedComponent>
-              <App />
-            </ProtectedComponent>
-          }
-        />
-        {/* <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />*/}
-        <Route
-          path="category/:jenis"
-          element={
-            // <ProtectedComponent>
-            <CategoriesResult />
-            // </ProtectedComponent>
-          }
-        />
+        <Route path="/" element={<App />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        <Route path="category/:jenis" element={<CategoriesResult />} />
         <Route
           path="selected/:bookSlug"
           element={
-            // <ProtectedComponent>
-            <DetailBook />
-            // </ProtectedComponent>
+            <ProtectedComponent>
+              <DetailBook />
+            </ProtectedComponent>
           }
         />
-        <Route
-          path="search/:keyword"
-          element={
-            // <ProtectedComponent>
-            <SearchResult />
-            // </ProtectedComponent>
-          }
-        />
+        <Route path="search/:keyword" element={<SearchResult />} />
         <Route path="*" element={<h1>Halaman tidak ditemukan</h1>} />
       </Routes>
     </Router>
