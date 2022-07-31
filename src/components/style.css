@@ -20,7 +20,7 @@
   font-weight: bold;
 }
 
-.left-right {
+.left-right-login {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -28,21 +28,13 @@
   border-style: none;
 }
 
-.navigasi {
+.navigasi-login {
   flex-basis: 50%;
-  background: #008f96;
-  padding: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: large;
 }
-
-.konten1 {
+.konten1-login {
   flex-basis: 50%;
-  background-color: #009097;
-  padding-top: 30px;
   font-size: smaller;
   font-family: Tahoma;
 }

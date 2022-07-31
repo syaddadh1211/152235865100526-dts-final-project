@@ -3,10 +3,18 @@ import React, { useEffect, useState } from "react";
 
 // Gunakan .module.css untuk mendapatkan scoped css
 import styles from "./SignInOrUp.module.css";
+import "./style.css";
 
-import { Grid, Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Grid,
+  Box,
+  Button,
+  TextField,
+  Typography,
+  Container,
+} from "@mui/material";
 import { Link } from "react-router-dom";
-
+import quote from "../images/login-cover1.jpg";
 // firebase function call
 import {
   auth,
@@ -19,6 +27,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 // Karena nantinya kita bisa berpindah ke halaman LoginPage (setelah Register)
 // ataupun ke halaman HomePage (setelah Login), maka kita bisa memanfaatkan useNavigate
 import { useNavigate } from "react-router-dom";
+import { height } from "@mui/system";
 
 const SignInOrUp = ({ loginOrRegister }) => {
   // gunakan hooks useNavigate
@@ -84,56 +93,77 @@ const SignInOrUp = ({ loginOrRegister }) => {
   };
 
   return (
-    <Grid
-      container
-      spacing={0}
-      direction="column"
-      alignItems="center"
-      justifyContent="center"
-      style={{ minHeight: "95vh" }}
-    >
-      <Box className={styles.boxy} component="form" noValidate>
-        <Typography variant="body1">
-          {loginOrRegister === "login" ? "Login Page" : "Register Page"}
-        </Typography>
-
-        <TextField
-          label="Email"
-          type="email"
-          variant="outlined"
-          size="small"
-          value={credential.email}
-          onChange={textFieldEmailOnChangeHandler}
-        />
-
-        <TextField
-          label="password"
-          type="Password"
-          variant="outlined"
-          size="small"
-          value={credential.password}
-          onChange={textFieldPasswordOnChangeHandler}
-        />
-
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={buttonLoginOrRegisterOnClickHandler}
+    <div className="left-right-login">
+      <nav className="navigasi-login">
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          style={{ minHeight: "75vh" }}
         >
-          {loginOrRegister === "login" ? "Login" : "Register Account"}
-        </Button>
+          <Box sx={{ marginLeft: "100px", padding: "1em" }}>
+            <img src={quote} alt="login" width="90%" height="auto"></img>
+          </Box>
+        </Grid>
+      </nav>
 
-        {loginOrRegister === "login" ? (
-          <Link to="/register">
-            <Typography variant="body1">or do you want Register ?</Typography>
-          </Link>
-        ) : (
-          <Link to="/login">
-            <Typography variant="body1">or do you want Login ?</Typography>
-          </Link>
-        )}
-      </Box>
-    </Grid>
+      <section className="konten1-login">
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          style={{ minHeight: "75vh" }}
+        >
+          <Box className={styles.boxy} component="form" noValidate>
+            <Typography variant="body1">
+              {loginOrRegister === "login" ? "Login Page" : "Register Page"}
+            </Typography>
+
+            <TextField
+              label="Email"
+              type="email"
+              variant="outlined"
+              size="small"
+              value={credential.email}
+              onChange={textFieldEmailOnChangeHandler}
+            />
+
+            <TextField
+              label="password"
+              type="Password"
+              variant="outlined"
+              size="small"
+              value={credential.password}
+              onChange={textFieldPasswordOnChangeHandler}
+            />
+
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={buttonLoginOrRegisterOnClickHandler}
+            >
+              {loginOrRegister === "login" ? "Login" : "Register Account"}
+            </Button>
+
+            {loginOrRegister === "login" ? (
+              <Link to="/register">
+                <Typography variant="body1">
+                  or do you want Register ?
+                </Typography>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <Typography variant="body1">or do you want Login ?</Typography>
+              </Link>
+            )}
+          </Box>
+        </Grid>
+      </section>
+    </div>
   );
 };
 
