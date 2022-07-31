@@ -5,14 +5,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./SignInOrUp.module.css";
 import "./style.css";
 
-import {
-  Grid,
-  Box,
-  Button,
-  TextField,
-  Typography,
-  Container,
-} from "@mui/material";
+import { Grid, Box, Button, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import quote from "../images/login-cover1.jpg";
 // firebase function call

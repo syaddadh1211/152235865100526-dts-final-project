@@ -5,8 +5,7 @@ import { gramediaAll } from "../apis/gramedia";
 import ListBooks from "../components/ListBooks";
 import Footer from "../components/Footer";
 import CardCategori from "../components/CardCategori";
-import { Stack, Typography, Breadcrumbs } from "@mui/material";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { Typography } from "@mui/material";
 
 const CategoriesResult = () => {
   let params = useParams();
