@@ -4,7 +4,7 @@ import axios from "axios";
 const gramedia = axios.create({
   baseURL: "https://laravel-books-db.herokuapp.com/api",
   headers: {
-    Authorization: "Bearer 83|MjHukGCaYeAPD9Pb68E85RzGRiW2HEii9UM0mDJD",
+    Authorization: process.env.REACT_APP_API_KEY,
     Accept: "application/json",
   },
   params: {
@@ -17,7 +17,7 @@ const gramedia = axios.create({
 const gramediaLokal = axios.create({
   baseURL: "https://laravel-books-db.herokuapp.com/api",
   headers: {
-    Authorization: "Bearer 83|MjHukGCaYeAPD9Pb68E85RzGRiW2HEii9UM0mDJD",
+    Authorization: process.env.REACT_APP_API_KEY,
     Accept: "application/json",
   },
   params: {
@@ -30,7 +30,7 @@ const gramediaLokal = axios.create({
 const gramediaAll = axios.create({
   baseURL: "https://laravel-books-db.herokuapp.com/api",
   headers: {
-    Authorization: "Bearer 83|MjHukGCaYeAPD9Pb68E85RzGRiW2HEii9UM0mDJD",
+    Authorization: process.env.REACT_APP_API_KEY,
     Accept: "application/json",
   },
 });
@@ -38,7 +38,7 @@ const gramediaAll = axios.create({
 const gramediaKeyword = axios.create({
   baseURL: "https://laravel-books-db.herokuapp.com/api",
   headers: {
-    Authorization: "Bearer 83|MjHukGCaYeAPD9Pb68E85RzGRiW2HEii9UM0mDJD",
+    Authorization: process.env.REACT_APP_API_KEY,
     Accept: "application/json",
   },
   params: {
