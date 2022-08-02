@@ -94,6 +94,9 @@ const NavBar = () => {
     setAnchorElUser(event.currentTarget);
   };
 
+  const handleCloseWishMenu = (event) => {
+    navigate("/wishlist");
+  };
   const handleCloseNavMenu = (event, page) => {
     setAnchorElNav(null);
     switch (page) {
@@ -108,6 +111,9 @@ const NavBar = () => {
         break;
       case "Buku Bahasa Inggris Promo":
         navigate("/search/Sherlock");
+        break;
+      case "My Wishlist":
+        navigate("/wishlist/");
         break;
       default:
         navigate("/");
@@ -217,6 +223,13 @@ const NavBar = () => {
                 </Button>
               ))}
             </Box>
+            <Button
+              key="1"
+              onClick={(event) => handleCloseWishMenu(event)}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              My Wishlist
+            </Button>
             <Box sx={{ flexGrow: 0 }}>
               {/* <Tooltip title="Open settings"> */}
               <Typography>{user?.email}</Typography>
@@ -238,7 +251,7 @@ const NavBar = () => {
             <Box sx={{ flexGrow: 0 }}>
               {/* <Tooltip title="Open settings"> */}
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Login" src="../../public/logo192.png" />
+                <Avatar alt="Login" src="../images/recom.png" />
               </IconButton>
               {/* </Tooltip> */}
               <Menu

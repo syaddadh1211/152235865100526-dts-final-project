@@ -4,11 +4,15 @@ import { Box, Grid, CardMedia } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 
-const CardBook = ({ propsBook }) => {
+const CardBook = ({ propsBook, remark }) => {
   let navigate = useNavigate();
 
   const handleBook = (event, book) => {
     navigate("/selected/" + book.slug);
+  };
+
+  const btnOnClickHandler = (todoId) => {
+    // props.fnCompleteTodo(todoId);
   };
 
   return (
@@ -38,6 +42,17 @@ const CardBook = ({ propsBook }) => {
             <div className="card-title">{propsBook.title}</div>
             <div className="card-author">{propsBook.author}</div>
             <div className="card-price">{propsBook.price}</div>
+            <div>
+              {
+                (remark = "True" ? (
+                  ""
+                ) : (
+                  <button onClick={() => btnOnClickHandler(propsBook.slug)}>
+                    Delete
+                  </button>
+                ))
+              }
+            </div>
           </Grid>
         </Grid>
       </Box>

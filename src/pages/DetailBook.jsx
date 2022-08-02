@@ -15,12 +15,22 @@ import CardMedia from "@mui/material/CardMedia";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { auth, firestore } from "../authentication/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { collection, addDoc } from "firebase/firestore";
 
 const DetailBook = () => {
   let params = useParams();
-
+  const [user] = useAuthState(auth);
   const [book, setBook] = useState([]);
   const [detail, setDetail] = useState([]);
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +47,27 @@ const DetailBook = () => {
     fetchData();
     //cukup sekali dijalankan jadi dikasih array kosong, kalo ingin setiap kali reaktif saat ada perubahan state maka
     //array bisa diisi nama statenya
-  }, []);
+  }, [params.bookSlug]);
+
+  const user_wishlist = collection(firestore, "user_wishlist");
+
+  const handleWish = async (event, book) => {
+    event.preventDefault();
+    const newDoc = await addDoc(user_wishlist, {
+      email: user.email,
+      author: book.author,
+      image: book.image,
+      price: book.price,
+      slug: book.slug,
+      title: book.title,
+    });
+    console.log(newDoc.id);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -95,6 +125,32 @@ const DetailBook = () => {
             <Typography component="div" variant="h6" className="card-price">
               {book.price}
             </Typography>
+            <Button
+              variant="contained"
+              onClick={(event) => handleWish(event, book)}
+            >
+              Add to Wishlist
+            </Button>
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                {"User Wishlist"}
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  Berhasil menambahkan ke Wishlist
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose} autoFocus>
+                  Tutup
+                </Button>
+              </DialogActions>
+            </Dialog>
           </CardContent>
         </Box>
       </Card>

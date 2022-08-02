@@ -21,7 +21,7 @@ const ListBooks = ({ propId, paramBooks, keyword }) => {
             break;
           case "2": // dari SearchResult component
             setBooks(paramBooks);
-            setTitle("");
+            setTitle(keyword);
             break;
           case "3":
             response = await gramedia.get("/categories/classics/books");
@@ -35,6 +35,10 @@ const ListBooks = ({ propId, paramBooks, keyword }) => {
             break;
           case "5": // dari CategoriesResult component
             console.log(paramBooks);
+            setBooks(paramBooks);
+            setTitle(keyword);
+            break;
+          case "6":
             setBooks(paramBooks);
             setTitle(keyword);
             break;
@@ -67,7 +71,7 @@ const ListBooks = ({ propId, paramBooks, keyword }) => {
         {books.map((book, index) => {
           return (
             <div>
-              <CardBook key={index + 1} propsBook={book} />
+              <CardBook key={index + 1} propsBook={book} remark="false" />
             </div>
           );
         })}

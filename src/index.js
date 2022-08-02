@@ -12,6 +12,7 @@ import RegisterPage from "./pages/RegisterPage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CategoriesResult from "./pages/CategoriesResult";
+import MyWishlist from "./pages/MyWishlist";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -32,6 +33,16 @@ root.render(
           }
         />
         <Route path="search/:keyword" element={<SearchResult />} />
+
+        <Route
+          path="wishlist"
+          element={
+            <ProtectedComponent>
+              <MyWishlist />{" "}
+            </ProtectedComponent>
+          }
+        />
+
         <Route path="*" element={<h1>Halaman tidak ditemukan</h1>} />
       </Routes>
     </Router>

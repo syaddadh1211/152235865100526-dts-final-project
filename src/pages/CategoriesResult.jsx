@@ -5,7 +5,6 @@ import { gramediaAll } from "../apis/gramedia";
 import ListBooks from "../components/ListBooks";
 import Footer from "../components/Footer";
 import CardCategori from "../components/CardCategori";
-import { Typography } from "@mui/material";
 
 const CategoriesResult = () => {
   let params = useParams();
@@ -25,18 +24,6 @@ const CategoriesResult = () => {
     };
     fetchData();
   }, [params.jenis]);
-
-  const breadcrumbs = [
-    <Typography key="3" color="text.primary">
-      Hasil Pencarian
-    </Typography>,
-    <Typography key="3" color="text.primary">
-      Kategori
-    </Typography>,
-    <Typography key="3" color="text.primary">
-      {params.jenis}
-    </Typography>,
-  ];
 
   return (
     <div>
