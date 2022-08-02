@@ -4,8 +4,6 @@ import "./style.css";
 import ListBooks from "../components/ListBooks";
 import Footer from "../components/Footer";
 import CardCategori from "../components/CardCategori";
-import { Stack, Typography, Breadcrumbs } from "@mui/material";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { auth, firestore } from "../authentication/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { collection, query, where, getDocs } from "firebase/firestore";
@@ -25,26 +23,13 @@ const MyWishlist = () => {
       const querySnapshot = await getDocs(wishlistQuery);
       querySnapshot.forEach((book) => {
         bookWish.push(book.data());
+        bookWish.splice(1, 0, { id: book.id });
       });
 
       setBooks(bookWish);
     };
     queryForWishlist();
-    //cukup sekali dijalankan jadi dikasih array kosong, kalo ingin setiap kali reaktif saat ada perubahan state maka
-    //array bisa diisi nama statenya
-  }, [bookWish]);
-
-  //   const breadcrumbs = [
-  //     <Typography key="3" color="text.primary">
-  //       My Total
-  //     </Typography>,
-  //     <Typography key="3" color="text.primary">
-  //       Wish List
-  //     </Typography>,
-  //     <Typography key="3" color="text.primary">
-  //       {books.length} {" book"}
-  //     </Typography>,
-  //   ];
+  }, [books]);
 
   return (
     <div>
@@ -53,21 +38,6 @@ const MyWishlist = () => {
           <CardCategori />
         </nav>
         <section>
-          {/* <Stack
-            spacing={2}
-            sx={{
-              marginTop: "1em",
-              marginBottom: "2em",
-              marginLeft: "2em",
-            }}
-          >
-            <Breadcrumbs
-              separator={<NavigateNextIcon fontSize="small" font />}
-              aria-label="breadcrumb"
-            >
-              {breadcrumbs}
-            </Breadcrumbs>
-          </Stack> */}
           <ListBooks
             propId="6"
             paramBooks={books}

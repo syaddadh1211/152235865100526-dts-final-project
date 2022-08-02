@@ -3,6 +3,8 @@ import React from "react";
 import { Box, Grid, CardMedia } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
+import { doc, deleteDoc } from "firebase/firestore";
+import { auth, firestore } from "../authentication/firebase";
 
 const CardBook = ({ propsBook, remark }) => {
   let navigate = useNavigate();
@@ -11,8 +13,9 @@ const CardBook = ({ propsBook, remark }) => {
     navigate("/selected/" + book.slug);
   };
 
-  const btnOnClickHandler = (todoId) => {
-    // props.fnCompleteTodo(todoId);
+  const btnOnClickHandler = (event, id) => {
+    event.preventDefault();
+    console.log(id);
   };
 
   return (
@@ -42,16 +45,20 @@ const CardBook = ({ propsBook, remark }) => {
             <div className="card-title">{propsBook.title}</div>
             <div className="card-author">{propsBook.author}</div>
             <div className="card-price">{propsBook.price}</div>
+            <div className="card-price">
+              {"test id "}
+              {propsBook.id}
+            </div>
             <div>
-              {
-                (remark = "True" ? (
-                  ""
-                ) : (
-                  <button onClick={() => btnOnClickHandler(propsBook.slug)}>
-                    Delete
-                  </button>
-                ))
-              }
+              {remark === "True" ? (
+                ""
+              ) : (
+                <button
+                  onClick={(event) => btnOnClickHandler(event, propsBook.id)}
+                >
+                  Delete
+                </button>
+              )}
             </div>
           </Grid>
         </Grid>

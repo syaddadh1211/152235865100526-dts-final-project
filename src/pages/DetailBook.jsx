@@ -15,6 +15,8 @@ import CardMedia from "@mui/material/CardMedia";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -23,14 +25,15 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { auth, firestore } from "../authentication/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 
 const DetailBook = () => {
   let params = useParams();
   const [user] = useAuthState(auth);
   const [book, setBook] = useState([]);
   const [detail, setDetail] = useState([]);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,17 +55,33 @@ const DetailBook = () => {
   const user_wishlist = collection(firestore, "user_wishlist");
 
   const handleWish = async (event, book) => {
-    event.preventDefault();
-    const newDoc = await addDoc(user_wishlist, {
-      email: user.email,
-      author: book.author,
-      image: book.image,
-      price: book.price,
-      slug: book.slug,
-      title: book.title,
+    let bookWish = [];
+    const wishlistQuery = query(
+      collection(firestore, "user_wishlist"),
+      where("email", "==", user.email),
+      where("slug", "==", book.slug)
+    );
+
+    const querySnapshot = await getDocs(wishlistQuery);
+    querySnapshot.forEach((book) => {
+      bookWish.push(book.data());
     });
-    console.log(newDoc.id);
-    setOpen(true);
+    if (bookWish.length > 0) {
+      setOpen(true);
+      setMessage("Buku ini sudah ada dalam Wishlist kamu");
+    } else {
+      event.preventDefault();
+      const newDoc = await addDoc(user_wishlist, {
+        email: user.email,
+        author: book.author,
+        image: book.image,
+        price: book.price,
+        slug: book.slug,
+        title: book.title,
+      });
+      setMessage("Berhasil ditambahkan ke Wishlist");
+      setOpen(true);
+    }
   };
 
   const handleClose = () => {
@@ -131,6 +150,7 @@ const DetailBook = () => {
             >
               Add to Wishlist
             </Button>
+
             <Dialog
               open={open}
               onClose={handleClose}
@@ -142,7 +162,7 @@ const DetailBook = () => {
               </DialogTitle>
               <DialogContent>
                 <DialogContentText id="alert-dialog-description">
-                  Berhasil menambahkan ke Wishlist
+                  {message}
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
