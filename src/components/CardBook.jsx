@@ -54,7 +54,7 @@ const CardBook = ({ propsBook, remark }) => {
             <div className="card-price">{propsBook.price}</div>
 
             <div>
-              {remark.slice(0, 5) !== "There" ? (
+              {remark.slice(0, 11) !== "My Wishlist" ? (
                 ""
               ) : (
                 <button

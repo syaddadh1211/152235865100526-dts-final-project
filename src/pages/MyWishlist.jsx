@@ -41,11 +41,7 @@ const MyWishlist = () => {
           <CardCategori />
         </nav>
         <section>
-          <ListBooks
-            propId="6"
-            paramBooks={books}
-            keyword={"There are " + books.length + " book in my wishlist"}
-          />
+          <ListBooks propId="6" paramBooks={books} keyword={"My Wishlist"} />
         </section>
       </div>
       <Footer />
