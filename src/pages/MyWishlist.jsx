@@ -22,8 +22,11 @@ const MyWishlist = () => {
 
       const querySnapshot = await getDocs(wishlistQuery);
       querySnapshot.forEach((book) => {
-        bookWish.push(book.data());
-        bookWish.splice(1, 0, { id: book.id });
+        const buku = {
+          id: book.id,
+          ...book.data(),
+        };
+        bookWish.push(buku);
       });
 
       setBooks(bookWish);

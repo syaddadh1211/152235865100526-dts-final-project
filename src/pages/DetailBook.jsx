@@ -15,8 +15,7 @@ import CardMedia from "@mui/material/CardMedia";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
-import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
+
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -71,6 +70,7 @@ const DetailBook = () => {
       setMessage("Buku ini sudah ada dalam Wishlist kamu");
     } else {
       event.preventDefault();
+
       const newDoc = await addDoc(user_wishlist, {
         email: user.email,
         author: book.author,
