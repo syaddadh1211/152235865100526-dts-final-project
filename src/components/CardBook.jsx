@@ -37,32 +37,24 @@ const CardBook = ({ propsBook, remark }) => {
           marginLeft="10px"
           maxWidth="138px"
         >
-          {remark === "True" ? (
-            ""
-          ) : (
-            <Grid item xs={8}>
-              <a href="#">
-                <CardMedia
-                  component="img"
-                  height="200px"
-                  sx={{ width: 121 }}
-                  image={`${propsBook.image}`}
-                  alt="green book"
-                  textAlign="center"
-                  onClick={(event) => handleBook(event, propsBook)}
-                />
-              </a>
-              <div className="card-title">{propsBook.title}</div>
-              <div className="card-author">{propsBook.author}</div>
-              <div className="card-price">{propsBook.price}</div>
+          <Grid item xs={8}>
+            <a href="#">
+              <CardMedia
+                component="img"
+                height="200px"
+                sx={{ width: 121 }}
+                image={`${propsBook.image}`}
+                alt="green book"
+                textAlign="center"
+                onClick={(event) => handleBook(event, propsBook)}
+              />
+            </a>
+            <div className="card-title">{propsBook.title}</div>
+            <div className="card-author">{propsBook.author}</div>
+            <div className="card-price">{propsBook.price}</div>
 
-              <button
-                onClick={(event) => btnOnClickHandler(event, propsBook.id)}
-              >
-                Delete
-              </button>
-              {/* <div>
-              {remark === "True" || typeof propsBook.id === "undefined" ? (
+            <div>
+              {remark.slice(0, 5) !== "There" ? (
                 ""
               ) : (
                 <button
@@ -70,10 +62,9 @@ const CardBook = ({ propsBook, remark }) => {
                 >
                   Delete
                 </button>
-             
-            </div> */}
-            </Grid>
-          )}
+              )}
+            </div>
+          </Grid>
         </Grid>
       </Box>
     </>

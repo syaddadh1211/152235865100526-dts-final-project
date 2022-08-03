@@ -71,7 +71,7 @@ const ListBooks = ({ propId, paramBooks, keyword }) => {
         {books.map((book, index) => {
           return (
             <div>
-              <CardBook key={index + 1} propsBook={book} remark="false" />
+              <CardBook key={index + 1} propsBook={book} remark={keyword} />
             </div>
           );
         })}
