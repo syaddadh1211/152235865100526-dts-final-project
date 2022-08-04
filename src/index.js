@@ -8,6 +8,7 @@ import ProtectedComponent from "./components/ProtectedComponent";
 import DetailBook from "./pages/DetailBook";
 import SearchResult from "./pages/SearchResult";
 import LoginPage from "./pages/LoginPage";
+import UserProfile from "./pages/UserProfile";
 import RegisterPage from "./pages/RegisterPage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -22,6 +23,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="login" element={<LoginPage />} />
+        <Route path="edit" element={<UserProfile />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="category/:jenis" element={<CategoriesResult />} />
         <Route

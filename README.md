@@ -13,3 +13,5 @@ Sebuah situs yang menampilkan e-book Gramedia dengan memanfaatkan API dari `http
 `Sign in/up menggunakan firebase Auth.`
 
 `User Wishlist, dimana user bisa memilih buku yang diinginkan dan bisa melihat daftarnya, data tersimpan di database (menggunakan firebase firestore).`
+
+`Menampilkan/mengupdate user profile /user account information (menggunakan firebase firestore).`

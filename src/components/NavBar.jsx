@@ -22,8 +22,9 @@ import InputBase from "@mui/material/InputBase";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../authentication/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../authentication/firebase";
+import { auth, firestore } from "../authentication/firebase";
 import Image from "../../src/images/e-book.jpg";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 const pages = ["Home", "Buku Fiksi Pilihan", "Komik Segera Terbit"];
 
@@ -86,6 +87,7 @@ const NavBar = () => {
 
   let navigate = useNavigate();
   const [user] = useAuthState(auth);
+  const [first, setFirst] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -121,16 +123,33 @@ const NavBar = () => {
     }
   };
 
-  const handleCloseUserMenu = async () => {
-    console.log(anchorElUser);
-    if (user) {
-      setLogin("Logout");
-      await logout();
-      setLogin("Login");
-    } else {
-      navigate("/login");
+  const handleCloseUserMenu = async (event, number) => {
+    switch (number) {
+      case 1:
+        if (user) {
+          setLogin("Logout");
+          await logout();
+          setLogin("Login");
+          setFirst(null);
+          navigate("/");
+        } else {
+          navigate("/login");
+        }
+        setAnchorElUser(null);
+        break;
+      case 2:
+        if (user) {
+          navigate("/edit");
+        } else {
+          navigate("/login");
+        }
+        setAnchorElUser(null);
+        break;
+      default:
+        navigate("/");
+        setAnchorElUser(null);
+        break;
     }
-    setAnchorElUser(null);
   };
 
   const handleKeyPress = (event) => {
@@ -142,6 +161,18 @@ const NavBar = () => {
   React.useEffect(() => {
     if (user) {
       setLogin("Logout");
+      const queryForProfile = async () => {
+        const profileQuery = query(
+          collection(firestore, "user_profile"),
+          where("email", "==", user.email)
+        );
+
+        const querySnapshot = await getDocs(profileQuery);
+        querySnapshot.forEach((profile) => {
+          setFirst(profile.data().firstname);
+        });
+      };
+      queryForProfile();
     } else {
       setLogin("Login");
     }
@@ -231,8 +262,9 @@ const NavBar = () => {
               My Wishlist
             </Button>
             <Box sx={{ flexGrow: 0 }}>
-              {/* <Tooltip title="Open settings"> */}
-              <Typography>{user?.email}</Typography>
+              <div>
+                {first === null ? "" : <Typography> Hi, {first}</Typography>}
+              </div>
             </Box>
             <Box>
               <Search
@@ -270,7 +302,16 @@ const NavBar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem key="1" onClick={handleCloseUserMenu}>
+                <MenuItem
+                  key="2"
+                  onClick={(event) => handleCloseUserMenu(event, 2)}
+                >
+                  <Typography textAlign="center">Edit Akun</Typography>
+                </MenuItem>
+                <MenuItem
+                  key="1"
+                  onClick={(event) => handleCloseUserMenu(event, 1)}
+                >
                   <Typography textAlign="center">{login}</Typography>
                 </MenuItem>
               </Menu>
